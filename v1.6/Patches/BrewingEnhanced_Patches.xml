@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="Wort"]/comps</xpath>
+		<value>
+			<li Class="BrewingEnhanced.CompProperties_Blend">
+				<minTotalItems>125</minTotalItems>
+				<acceptedDefs>
+					<li>RawCorn</li>
+					<li>RawRice</li>
+					<li>RawHops</li>
+				</acceptedDefs>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>RimCuisine 2 Core (Continued)</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd"> 
+					<xpath>/Defs/ThingDef[defName="BrewingEnhanced_Mash"]/comps[@Class="CompProperties_Blend"]/acceptedDefs</xpath>
+					<value>
+						<li>RC2_RawOats</li>
+						<li>RC2_RawBarley</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd"> 
+					<xpath>/Defs/ThingDef[defName="Wort"]/comps[@Class="CompProperties_Blend"]/acceptedDefs</xpath>
+					<value>
+						<li>RC2_RawOats</li>
+						<li>RC2_RawBarley</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	
+	
+</Patch>
+

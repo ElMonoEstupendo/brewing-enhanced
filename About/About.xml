@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>LimboEstupendo's Brewing Enhanced</name>
+	<author>El Mono Estupendo, Jim for the Win</author>
+	<supportedVersions>
+		<li>1.6</li>
+	</supportedVersions>
+	<description>v0.1
+Brew better beer! This mod adds complexity and steps to the beer brewing process, to allow an incredible variety and quality of product.
+	</description>
+	<packageId>ElMonoEstupendo.brewingenhanced</packageId>
+	<modDependencies>
+		<li>
+		  <packageId>brrainz.harmony</packageId>
+		  <displayName>Harmony</displayName>
+		  <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+		  <steamWorkshopUrl>https://steamcommunity.com/workshop/filedetails/?id=2009463077</steamWorkshopUrl>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>UnlimitedHugs.HugsLib</li>
+	</loadAfter>
+</ModMetaData>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef Name="BrewingEnhanced_Mash" ParentName="ResourceBase">
+		<defName>BrewingEnhanced_Mash</defName>
+		<label>mash</label>
+		<description>A sweet liquid solution, composed of sugars from mashed grains steeped in water.</description>
+		<graphicData>
+		  <texPath>things/items/resource/mash</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<rotatable>false</rotatable>
+		<stackLimit>250</stackLimit>
+		<thingCategories>
+		  <li>Manufactured</li>
+		</thingCategories>
+		<statBases>
+		  <DeteriorationRate>1.0</DeteriorationRate>
+		  <MarketValue>2.5</MarketValue>
+		  <Mass>0.8</Mass>
+		  <Flammability>0.2</Flammability>
+		  <MaxHitPoints>60</MaxHitPoints>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<comps>
+		  <li Class="CompProperties_Rottable">
+			<daysToRotStart>5</daysToRotStart>
+			<rotDestroys>true</rotDestroys>
+		  </li>
+		  <li Class="BrewingEnhanced.CompProperties_Blend">
+			<minTotalItems>100</minTotalItems>
+			<acceptedDefs>
+				<li>RawCorn</li>
+				<li>RawRice</li>
+			</acceptedDefs>
+		  </li>
+		</comps>
+	</ThingDef>
+	
+	<RecipeDef Name="BrewingEnhanced_MashGrain">
+		<defName>BrewingEnhanced_MashGrain</defName>
+		<label>make mash from grain</label>
+		<description>Mash up grains and steep in water. First step in brewing beer.</description>
+		<jobString>mashing grain</jobString>
+		<workAmount>600</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workSkill>Cooking</workSkill>
+		<recipeUsers>
+		  <li>Brewery</li>
+		</recipeUsers>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>RawCorn</li>
+				<li>RawRice</li>
+			  </thingDefs>
+			</filter>
+			<count>100</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <BrewingEnhanced_Mash>25</BrewingEnhanced_Mash>
+		</products>
+		<fixedIngredientFilter>
+		  <thingDefs>
+			<li>RawCorn</li>
+			<li>RawRice</li>
+		  </thingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+		  <thingDefs>
+			<li>RawCorn</li>
+			<li>RawRice</li>
+		  </thingDefs>
+		</defaultIngredientFilter>
+	</RecipeDef>
+	
+	<RecipeDef Name="BrewingEnhanced_BoilMash">
+		<defName>BrewingEnhanced_BoilMash</defName>
+		<label>boil mash into wort</label>
+		<description>Boil mash and hops to make wort. Second step in brewing beer.</description>
+		<jobString>boiling mash</jobString>
+		<workAmount>600</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+			</recipeUsers>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>BrewingEnhanced_Mash</li>
+			  </thingDefs>
+			</filter>
+			<count>25</count>
+		  </li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>RawHops</li>
+			  </thingDefs>
+			</filter>
+			<count>25</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <Wort>25</Wort>
+		</products>
+	</RecipeDef>
+</Defs>
