@@ -13,7 +13,7 @@ namespace BrewingEnhanced
     {
 		static BrewingEnhanced_Main()
 		{
-			Log.Message("Enhancing the brewing now...");
+			Log.Message("Enhancing the brewing, Jim...");
 			Harmony harmony = new Harmony("ElMonoEstupendo.brewingenhanced");
 			harmony.PatchAll();
 		}
