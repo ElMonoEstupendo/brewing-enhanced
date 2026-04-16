@@ -1,9 +1,12 @@
 ﻿using HarmonyLib;
+using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace BrewingEnhanced
@@ -11,7 +14,7 @@ namespace BrewingEnhanced
     static class CompBlend_Patch
     {
 		[HarmonyPatch(typeof(GenRecipe), nameof(GenRecipe.MakeRecipeProducts))]
-		public class AddBlendItems
+		public class AddRecipeBlendItems
 		{
 			[HarmonyPostfix]
 			public static IEnumerable<Thing> Postfix(IEnumerable<Thing> values, RecipeDef recipeDef, List<Thing> ingredients)
@@ -26,20 +29,65 @@ namespace BrewingEnhanced
 							CompBlend ingredient_blend = ingredient.TryGetComp<CompBlend>();
 							if(ingredient_blend != null)
 							{
-								foreach(var item in ingredient_blend.BlendIngredients)
-								{
-									blend.AddIngredient(item.Key, item.Value);
-								}
-							}
-							else
+								blend.Add(ingredient_blend);
+							} else
 							{
-								blend.AddIngredient(ingredient.def, ingredient.stackCount);
+								blend.Add(ingredient.def, ingredient.stackCount);
 							}
 						}
 					}
 					yield return thing;
 				}
 				yield break;
+			}
+		}
+
+		[HarmonyPatch(typeof(Building_FermentingBarrel), nameof(Building_FermentingBarrel.AddWort), new Type[] { typeof(Thing) })]
+		public class AddWortBlendToBarrel
+		{
+			[HarmonyPrefix]
+			public static void Prefix(Thing wort, Building_FermentingBarrel __instance)
+			{
+				CompBlend blend = __instance.TryGetComp<CompBlend>();
+				CompBlend wortBlend = wort.TryGetComp<CompBlend>();
+				if( blend != null && wortBlend != null )
+				{
+					int numAdded = Mathf.Min(wort.stackCount, __instance.SpaceLeftForWort);
+					if( numAdded > 0 )
+					{
+						blend.Add(wortBlend, numAdded / wortBlend.PropsBlend.reductionFactor);
+					}
+				}
+			}
+		}
+
+		[HarmonyPatch(typeof(Building_FermentingBarrel), "Reset")]
+		public class ResetBlendItems
+		{
+			[HarmonyPostfix]
+			public static void Postfix(Building_FermentingBarrel __instance)
+			{
+				CompBlend blend = __instance.TryGetComp<CompBlend>();
+				if( blend != null )
+				{
+					blend.Reset();
+				}
+			}
+		}
+
+		[HarmonyPatch(typeof(Building_FermentingBarrel), nameof(Building_FermentingBarrel.TakeOutBeer))]
+		public class AddBlendToBeer
+		{
+			[HarmonyPostfix]
+			public static Thing Postfix(Thing beer, Building_FermentingBarrel __instance)
+			{
+				CompBlend beerBlend = beer.TryGetComp<CompBlend>();
+				CompBlend barrelBlend = __instance.TryGetComp<CompBlend>();
+				if( null != beerBlend && null != barrelBlend )
+				{
+					beerBlend.Add(barrelBlend, usePrevious: true);
+				}
+				return beer;
 			}
 		}
     }

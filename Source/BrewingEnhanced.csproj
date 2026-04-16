@@ -56,6 +56,7 @@
     <Compile Include="BrewingEnhanced_Main.cs" />
     <Compile Include="CompBlend.cs" />
     <Compile Include="CompBlend_Patch.cs" />
+    <Compile Include="Defs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
