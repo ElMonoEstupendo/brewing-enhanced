@@ -16,9 +16,14 @@ namespace BrewingEnhanced
 		// Base Fields
 		public Dictionary<ThingDef, int> BlendItems = new Dictionary<ThingDef, int>();
 		public Dictionary<ThingDef, int> PreviousItems = null;
+
 		public Stock SecondaryItem = null;
 		public Stock PreviousSecondaryItem = null;
+
 		public float TotalProgress = 0.0f;
+
+		public Dictionary<string, int> TicksInRange = new Dictionary<string, int>();
+		public Dictionary<string, int> PreviousTicksInRange = null;
 
 		// Derived
 		public Dictionary<ThingDef, float> BlendFractions => BlendItems.ToDictionary(x => x.Key, x => (float)x.Value / TotalItemCount);
@@ -26,6 +31,7 @@ namespace BrewingEnhanced
 		public int TotalItemCount => BlendItems.Select(x => x.Value).Sum();
 		public int ReducedItemCount => TotalItemCount / PropsBlend.ReductionFactor;
 		public bool AcceptingDryHops => !(SecondaryItem?.Satisfied ?? true) && (TotalProgress < PropsBlend.MaxDryHoppingProgress);
+		public bool IsFermenting => PropsBlend.IsFermenter && ((parent as Building_FermentingBarrel).Fermented == false) && (TotalItemCount > 0); 
 
 		public CompProperties_Blend PropsBlend
 		{
@@ -41,6 +47,7 @@ namespace BrewingEnhanced
 			Scribe_Collections.Look(ref BlendItems, "BlendIngredients", LookMode.Def);
 			Scribe_Deep.Look(ref SecondaryItem, "SecondaryItem");
 			Scribe_Values.Look(ref TotalProgress, "TotalProgress");
+			Scribe_Collections.Look(ref TicksInRange, "TicksInRange");
 			if(BlendItems == null) BlendItems = new Dictionary<ThingDef, int>();
 		}
 
@@ -48,8 +55,11 @@ namespace BrewingEnhanced
 		{
 			PreviousItems = BlendItems.ToDictionary(bi => bi.Key, bi => bi.Value);
 			PreviousSecondaryItem = new Stock(SecondaryItem);
+			PreviousTicksInRange = TicksInRange.ToDictionary(d => d.Key, d => d.Value);
+
 			BlendItems.Clear();
 			BlendFractions.Clear();
+			TicksInRange.Clear();
 			SecondaryItem = null;
 			ResetListers(parent?.Map);
 		}
@@ -85,6 +95,17 @@ namespace BrewingEnhanced
 			if( num_added <= 0) { return; }
 			SecondaryItem.currentCount += num_added;
 			t.SplitOff(num_added).Destroy();
+		}
+
+		public override void CompTickRare()
+		{
+			base.CompTickRare();
+			if( !IsFermenting ) { return; }
+			float temperature = parent.AmbientTemperature;
+			FermentingTemperatureRange range = PropsBlend.TemperatureRanges.FirstOrDefault(tr => temperature >= tr.MinTemp && temperature <= tr.MaxTemp);
+			if( range == null) { range = FermentingTemperatureRange.OffRange; }
+			if( !TicksInRange.ContainsKey(range.key)) { TicksInRange[range.key] = 1; }
+			else { TicksInRange[range.key]++; }
 		}
 
 		public override string CompInspectStringExtra()
@@ -164,21 +185,6 @@ namespace BrewingEnhanced
 		{
 			base.PostDestroy(mode, previousMap);
 			ResetListers(previousMap);
-		}
-	}
-
-	public class CompProperties_Blend : CompProperties
-	{
-		public List<ThingDef> AcceptedDefs;
-		public List<ThingDefCountClass> SecondaryItems;
-		public int ReductionFactor;
-		public bool IsFermenter = false;
-		public float MaxDryHoppingProgress;
-		public int DryHoppingTickCount;
-
-		public CompProperties_Blend()
-		{
-			compClass = typeof(CompBlend);
 		}
 	}
 }

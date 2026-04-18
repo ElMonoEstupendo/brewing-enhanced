@@ -56,7 +56,9 @@
     <Compile Include="BrewingEnhanced_Main.cs" />
     <Compile Include="CompBlend.cs" />
     <Compile Include="CompBlend_Patch.cs" />
+    <Compile Include="CompProperties_Blend.cs" />
     <Compile Include="Defs.cs" />
+    <Compile Include="FermentingTemperatureRange.cs" />
     <Compile Include="JobDriver_AddDryHops.cs" />
     <Compile Include="MapComponent_BrewingEnhanced.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

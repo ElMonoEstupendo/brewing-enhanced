@@ -18,6 +18,18 @@
 					<RawHops>25</RawHops>
 					<RawAgave>25</RawAgave>
 				</SecondaryItems>
+				<TemperatureRanges>
+					<li>
+						<key>Lager</key>
+						<MinTemp>7</MinTemp>
+						<MaxTemp>14</MaxTemp>
+					</li>
+					<li>
+						<key>Ale</key>
+						<MinTemp>18</MinTemp>
+						<MaxTemp>24</MaxTemp>
+					</li>
+				</TemperatureRanges>
 			</li>
 		</value>
 	</Operation>
