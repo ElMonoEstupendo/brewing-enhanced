@@ -15,8 +15,9 @@ namespace BrewingEnhanced
 		public int currentCount = 0;
 
 		public int wantingCount => Math.Max(0, targetCount - currentCount);
+		public float PercentageSatisfied => ((float)currentCount * 100) / targetCount;
 		public bool Satisfied => currentCount >= targetCount;
-		public string Description => stockedDef.label + " " + currentCount.ToString() + "/" + targetCount.ToString();
+		public string Description => stockedDef.label + " " + PercentageSatisfied.ToString() + "%";
 
 		public Stock(ThingDef def, int target)
 		{

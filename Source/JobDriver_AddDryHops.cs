@@ -46,7 +46,7 @@ namespace BrewingEnhanced
 			this.FailOnBurningImmobile(TargetIndex.A);
 			base.AddEndCondition(delegate
 				{
-					if( this.Barrel.SpaceLeftForWort > 0 )
+					if( Fermenter.SecondaryItem.wantingCount > 0 )
 					{
 						return JobCondition.Ongoing;
 					}
