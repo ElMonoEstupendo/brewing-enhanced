@@ -73,7 +73,8 @@ namespace BrewingEnhanced
 			{
 				Add(item.Key, (int)(item.Value * multiplier));
 			}
-			SecondaryItem = new Stock(usePrevious ? newBlend.PreviousSecondaryItem : newBlend.SecondaryItem);
+			Stock stok = usePrevious ? newBlend.PreviousSecondaryItem : newBlend.SecondaryItem;
+			if( stok != null ){ SecondaryItem = new Stock(stok); }
 		}
 
 		public void AddSecondary(Thing t)
