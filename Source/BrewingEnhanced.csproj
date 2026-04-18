@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\v1.6\Assemblies\</OutputPath>
+    <OutputPath>..aa\v1.6\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -57,7 +57,11 @@
     <Compile Include="CompBlend.cs" />
     <Compile Include="CompBlend_Patch.cs" />
     <Compile Include="Defs.cs" />
+    <Compile Include="JobDriver_AddDryHops.cs" />
+    <Compile Include="MapComponent_BrewingEnhanced.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stock.cs" />
+    <Compile Include="WorkGiver_AddDryHops.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

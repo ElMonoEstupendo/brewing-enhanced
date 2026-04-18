@@ -11,7 +11,7 @@ namespace Defs
 	[DefOf]
     public static class BEDefOfs
     {
-		public static ThingDef BrewingEnhanced_Mash;
-
+		public static ThingDef	BrewingEnhanced_Mash;
+		public static JobDef	AddDryHops;
 	}
 }

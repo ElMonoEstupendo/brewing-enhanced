@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
+	<WorkGiverDef>
+		<defName>AddDryHops</defName>
+		<label>adding dry hops</label>
+		<giverClass>BrewingEnhanced.WorkGiver_AddDryHops</giverClass>
+		<workType>Hauling</workType>
+		<verb>dry hop</verb>
+		<gerund>dry hopping</gerund>
+		<priorityInType>19</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<canBeDoneByMechs>true</canBeDoneByMechs>
+	</WorkGiverDef>
+	
+	<JobDef>
+		<defName>AddDryHops</defName>
+		<driverClass>BrewingEnhanced.JobDriver_AddDryHops</driverClass>
+		<reportString>adding TargetB to TargetA.</reportString>
+		<suspendable>false</suspendable>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
 </Defs>

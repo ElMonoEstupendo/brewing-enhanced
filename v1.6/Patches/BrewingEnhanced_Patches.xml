@@ -4,13 +4,20 @@
 		<xpath>/Defs/ThingDef[defName="FermentingBarrel"]/comps</xpath>
 		<value>
 			<li Class="BrewingEnhanced.CompProperties_Blend">
-				<capacity>25</capacity>
-				<reductionFactor>5</reductionFactor>
-				<acceptedDefs>
+				<IsFermenter>true</IsFermenter>
+				<MaxDryHoppingProgress>0.5</MaxDryHoppingProgress>
+				<DryHoppingTickCount>200</DryHoppingTickCount>
+				<ReductionFactor>5</ReductionFactor>
+				<AcceptedDefs>
 					<li>RawCorn</li>
 					<li>RawRice</li>
 					<li>RawHops</li>
-				</acceptedDefs>
+				</AcceptedDefs>
+				<SecondaryItems>
+					<RawBerries>25</RawBerries>
+					<RawHops>25</RawHops>
+					<RawAgave>25</RawAgave>
+				</SecondaryItems>
 			</li>
 		</value>
 	</Operation>
@@ -18,13 +25,17 @@
 		<xpath>/Defs/ThingDef[defName="Beer"]/comps</xpath>
 		<value>
 			<li Class="BrewingEnhanced.CompProperties_Blend">
-				<capacity>5</capacity>
-				<reductionFactor>5</reductionFactor>
-				<acceptedDefs>
+				<ReductionFactor>5</ReductionFactor>
+				<AcceptedDefs>
 					<li>RawCorn</li>
 					<li>RawRice</li>
 					<li>RawHops</li>
-				</acceptedDefs>
+				</AcceptedDefs>
+				<SecondaryItems>
+					<RawBerries>25</RawBerries>
+					<RawHops>25</RawHops>
+					<RawAgave>25</RawAgave>
+				</SecondaryItems>
 			</li>
 		</value>
 	</Operation>
@@ -32,13 +43,12 @@
 		<xpath>/Defs/ThingDef[defName="Wort"]/comps</xpath>
 		<value>
 			<li Class="BrewingEnhanced.CompProperties_Blend">
-				<capacity>-1</capacity>
-				<reductionFactor>5</reductionFactor>
-				<acceptedDefs>
+				<ReductionFactor>5</ReductionFactor>
+				<AcceptedDefs>
 					<li>RawCorn</li>
 					<li>RawRice</li>
 					<li>RawHops</li>
-				</acceptedDefs>
+				</AcceptedDefs>
 			</li>
 		</value>
 	</Operation>

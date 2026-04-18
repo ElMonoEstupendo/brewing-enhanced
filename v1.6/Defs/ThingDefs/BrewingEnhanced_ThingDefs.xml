@@ -28,12 +28,11 @@
 			<rotDestroys>true</rotDestroys>
 		  </li>
 		  <li Class="BrewingEnhanced.CompProperties_Blend">
-			<capacity>-1</capacity>
-			<reductionFactor>4</reductionFactor>
-			<acceptedDefs>
+			<ReductionFactor>4</ReductionFactor>
+			<AcceptedDefs>
 				<li>RawCorn</li>
 				<li>RawRice</li>
-			</acceptedDefs>
+			</AcceptedDefs>
 		  </li>
 		</comps>
 	</ThingDef>

@@ -55,7 +55,7 @@ namespace BrewingEnhanced
 					int numAdded = Mathf.Min(wort.stackCount, __instance.SpaceLeftForWort);
 					if( numAdded > 0 )
 					{
-						blend.Add(wortBlend, numAdded / wortBlend.PropsBlend.reductionFactor);
+						blend.Add(wortBlend, numAdded / wortBlend.PropsBlend.ReductionFactor);
 					}
 				}
 			}

@@ -7,15 +7,31 @@
       "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:compblend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|s:\\steam\\steamapps\\common\\rimworld\\mods\\brewingenhanced\\source\\workgiver_adddryhops.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:workgiver_adddryhops.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|s:\\steam\\steamapps\\common\\rimworld\\mods\\brewingenhanced\\source\\mapcomponent_brewingenhanced.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:mapcomponent_brewingenhanced.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|s:\\steam\\steamapps\\common\\rimworld\\mods\\brewingenhanced\\source\\jobdriver_adddryhops.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:jobdriver_adddryhops.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|s:\\steam\\steamapps\\common\\rimworld\\mods\\brewingenhanced\\source\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|s:\\steam\\steamapps\\common\\rimworld\\mods\\brewingenhanced\\source\\defs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:defs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\compblend_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:compblend_patch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|BrewingEnhanced||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|s:\\steam\\steamapps\\common\\rimworld\\mods\\brewingenhanced\\source\\defs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|solutionrelative:defs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7EE3A360-E854-4EC3-A678-E7764ED2C66E}|BrewingEnhanced.csproj|S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\brewingenhanced_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -32,8 +48,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 249,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MapComponent_BrewingEnhanced.cs",
+              "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\MapComponent_BrewingEnhanced.cs",
+              "RelativeDocumentMoniker": "MapComponent_BrewingEnhanced.cs",
+              "ToolTip": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\MapComponent_BrewingEnhanced.cs",
+              "RelativeToolTip": "MapComponent_BrewingEnhanced.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T11:23:36.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "JobDriver_AddDryHops.cs",
+              "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\JobDriver_AddDryHops.cs",
+              "RelativeDocumentMoniker": "JobDriver_AddDryHops.cs",
+              "ToolTip": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\JobDriver_AddDryHops.cs",
+              "RelativeToolTip": "JobDriver_AddDryHops.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T10:06:44.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WorkGiver_AddDryHops.cs",
+              "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\WorkGiver_AddDryHops.cs",
+              "RelativeDocumentMoniker": "WorkGiver_AddDryHops.cs",
+              "ToolTip": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\WorkGiver_AddDryHops.cs",
+              "RelativeToolTip": "WorkGiver_AddDryHops.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T08:12:33.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Stock.cs",
+              "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\Stock.cs",
+              "RelativeDocumentMoniker": "Stock.cs",
+              "ToolTip": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\Stock.cs",
+              "RelativeToolTip": "Stock.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T15:40:01.349Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -42,40 +110,40 @@
               "RelativeDocumentMoniker": "CompBlend.cs",
               "ToolTip": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\CompBlend.cs",
               "RelativeToolTip": "CompBlend.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAjwEwAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAmwLIAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-15T09:19:50.298Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Defs.cs",
               "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\Defs.cs",
               "RelativeDocumentMoniker": "Defs.cs",
               "ToolTip": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\Defs.cs",
               "RelativeToolTip": "Defs.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-16T06:16:00.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "CompBlend_Patch.cs",
               "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\CompBlend_Patch.cs",
               "RelativeDocumentMoniker": "CompBlend_Patch.cs",
               "ToolTip": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\CompBlend_Patch.cs",
               "RelativeToolTip": "CompBlend_Patch.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwEgAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAkwFQAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-15T13:12:45.259Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "BrewingEnhanced",
               "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\BrewingEnhanced.csproj",
               "RelativeDocumentMoniker": "BrewingEnhanced.csproj",
@@ -87,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "BrewingEnhanced_Main.cs",
               "DocumentMoniker": "S:\\Steam\\steamapps\\common\\RimWorld\\Mods\\BrewingEnhanced\\Source\\BrewingEnhanced_Main.cs",
               "RelativeDocumentMoniker": "BrewingEnhanced_Main.cs",
