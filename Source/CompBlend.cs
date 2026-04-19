@@ -15,15 +15,10 @@ namespace BrewingEnhanced
     {
 		// Base Fields
 		public Dictionary<ThingDef, int> BlendItems = new Dictionary<ThingDef, int>();
-		public Dictionary<ThingDef, int> PreviousItems = null;
-
 		public Stock SecondaryItem = null;
-		public Stock PreviousSecondaryItem = null;
-
 		public float TotalProgress = 0.0f;
-
 		public Dictionary<string, int> TicksInRange = new Dictionary<string, int>();
-		public Dictionary<string, int> PreviousTicksInRange = null;
+		public bool DelayReset = false;
 
 		// Derived
 		public Dictionary<ThingDef, float> BlendFractions => BlendItems.ToDictionary(x => x.Key, x => (float)x.Value / TotalItemCount);
@@ -48,15 +43,12 @@ namespace BrewingEnhanced
 			Scribe_Deep.Look(ref SecondaryItem, "SecondaryItem");
 			Scribe_Values.Look(ref TotalProgress, "TotalProgress");
 			Scribe_Collections.Look(ref TicksInRange, "TicksInRange");
-			if(BlendItems == null) BlendItems = new Dictionary<ThingDef, int>();
+			if( BlendItems == null ) BlendItems = new Dictionary<ThingDef, int>();
 		}
 
 		public void Reset()
 		{
-			PreviousItems = BlendItems.ToDictionary(bi => bi.Key, bi => bi.Value);
-			PreviousSecondaryItem = new Stock(SecondaryItem);
-			PreviousTicksInRange = TicksInRange.ToDictionary(d => d.Key, d => d.Value);
-
+			if( DelayReset ){ return; }
 			BlendItems.Clear();
 			BlendFractions.Clear();
 			TicksInRange.Clear();
@@ -76,15 +68,17 @@ namespace BrewingEnhanced
 			}
 		}
 
-		public void Add(CompBlend newBlend, float multiplier = 1.0f, bool usePrevious = false)
+		public void Add(CompBlend newBlend, float multiplier = 1.0f)
 		{
-			Dictionary<ThingDef, int> dict = (usePrevious ? newBlend.PreviousItems : newBlend.BlendItems);
-			foreach(var item in dict )
+			foreach(var item in newBlend.BlendItems)
 			{
 				Add(item.Key, (int)(item.Value * multiplier));
 			}
-			Stock stok = usePrevious ? newBlend.PreviousSecondaryItem : newBlend.SecondaryItem;
-			if( stok != null ){ SecondaryItem = new Stock(stok); }
+			if( newBlend.SecondaryItem != null ){ SecondaryItem = new Stock(newBlend.SecondaryItem); }
+			foreach(var item in newBlend.TicksInRange)
+			{
+				TicksInRange.SetOrAdd(item.Key, item.Value);
+			}
 		}
 
 		public void AddSecondary(Thing t)

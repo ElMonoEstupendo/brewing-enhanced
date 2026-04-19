@@ -78,15 +78,28 @@ namespace BrewingEnhanced
 		[HarmonyPatch(typeof(Building_FermentingBarrel), nameof(Building_FermentingBarrel.TakeOutBeer))]
 		public class AddBlendToBeer
 		{
+			[HarmonyPrefix]
+			public static void Prefix(Building_FermentingBarrel __instance)
+			{
+				CompBlend barrelBlend = __instance.TryGetComp<CompBlend>();
+				if(  barrelBlend != null )
+				{
+					barrelBlend.DelayReset = true;
+				}
+			}
+
 			[HarmonyPostfix]
 			public static Thing Postfix(Thing beer, Building_FermentingBarrel __instance)
 			{
 				CompBlend beerBlend = beer.TryGetComp<CompBlend>();
 				CompBlend barrelBlend = __instance.TryGetComp<CompBlend>();
-				if( null != beerBlend && null != barrelBlend )
+				if( null != barrelBlend )
 				{
-					beerBlend.Add(barrelBlend, usePrevious: true);
+					if( null != beerBlend ) { beerBlend.Add(barrelBlend); }
+					barrelBlend.DelayReset = false;
+					if( null != beer ){ barrelBlend.Reset(); } // Only actually reset if beer was made - original method can "fail".
 				}
+				
 				return beer;
 			}
 		}
