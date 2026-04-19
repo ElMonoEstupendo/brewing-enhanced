@@ -15,7 +15,6 @@ namespace BrewingEnhanced
 		public bool IsFermenter = false;
 		public float MaxDryHoppingProgress;
 		public int DryHoppingTickCount;
-		public List<FermentingTemperatureRange> TemperatureRanges;
 
 		public CompProperties_Blend()
 		{

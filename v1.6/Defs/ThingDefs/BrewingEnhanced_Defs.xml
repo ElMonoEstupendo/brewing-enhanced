@@ -116,4 +116,38 @@
 		  <Wort>25</Wort>
 		</products>
 	</RecipeDef>
+	
+	<BrewingEnhanced.BeerStyleDef>
+		<defName>Lager</defName>
+		<Label>Lager</Label>
+		<Priority>1</Priority>
+		<MinTemp>7</MinTemp>
+		<MaxTemp>14</MaxTemp>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef>
+		<defName>Ale</defName>
+		<Label>Ale</Label>
+		<Priority>1</Priority>
+		<MinTemp>18</MinTemp>
+		<MaxTemp>24</MaxTemp>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef>
+		<defName>Pilsner</defName>
+		<Label>Pilsner</Label>
+		<Priority>2</Priority>
+		<MinTemp>7</MinTemp>
+		<MaxTemp>14</MaxTemp>
+		<SecondaryIngredient>RawHops</SecondaryIngredient>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef>
+		<defName>IPA</defName>
+		<Label>IPA</Label>
+		<Priority>2</Priority>
+		<MinTemp>18</MinTemp>
+		<MaxTemp>24</MaxTemp>
+		<SecondaryIngredient>RawHops</SecondaryIngredient>
+	</BrewingEnhanced.BeerStyleDef>
 </Defs>

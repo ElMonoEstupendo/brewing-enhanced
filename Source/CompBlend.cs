@@ -17,7 +17,7 @@ namespace BrewingEnhanced
 		public Dictionary<ThingDef, int> BlendItems = new Dictionary<ThingDef, int>();
 		public Stock SecondaryItem = null;
 		public float TotalProgress = 0.0f;
-		public Dictionary<string, int> TicksInRange = new Dictionary<string, int>();
+		public Dictionary<BeerStyleDef, int> TicksInStyle = new Dictionary<BeerStyleDef, int>();
 		public bool DelayReset = false;
 
 		// Derived
@@ -42,8 +42,9 @@ namespace BrewingEnhanced
 			Scribe_Collections.Look(ref BlendItems, "BlendIngredients", LookMode.Def);
 			Scribe_Deep.Look(ref SecondaryItem, "SecondaryItem");
 			Scribe_Values.Look(ref TotalProgress, "TotalProgress");
-			Scribe_Collections.Look(ref TicksInRange, "TicksInRange");
+			Scribe_Collections.Look(ref TicksInStyle, "TicksInStyle");
 			if( BlendItems == null ) BlendItems = new Dictionary<ThingDef, int>();
+			if( TicksInStyle == null ) TicksInStyle = DefDatabase<BeerStyleDef>.AllDefs.ToDictionary(x => x, x => 0);
 		}
 
 		public void Reset()
@@ -51,9 +52,16 @@ namespace BrewingEnhanced
 			if( DelayReset ){ return; }
 			BlendItems.Clear();
 			BlendFractions.Clear();
-			TicksInRange.Clear();
+			TicksInStyle.Clear();
 			SecondaryItem = null;
 			ResetListers(parent?.Map);
+			TicksInStyle.Clear();
+			TicksInStyle = DefDatabase<BeerStyleDef>.AllDefs.ToDictionary(x => x, x => 0);
+		}
+
+		public void CullStyles()
+		{
+			TicksInStyle.RemoveAll(x => !x.Key.AcceptsBlend(this));
 		}
 
 		public void Add(ThingDef def, int value)
@@ -75,9 +83,9 @@ namespace BrewingEnhanced
 				Add(item.Key, (int)(item.Value * multiplier));
 			}
 			if( newBlend.SecondaryItem != null ){ SecondaryItem = new Stock(newBlend.SecondaryItem); }
-			foreach(var item in newBlend.TicksInRange)
+			foreach(var item in newBlend.TicksInStyle)
 			{
-				TicksInRange.SetOrAdd(item.Key, item.Value);
+				TicksInStyle.SetOrAdd(item.Key, item.Value);
 			}
 		}
 
@@ -96,10 +104,10 @@ namespace BrewingEnhanced
 			base.CompTickRare();
 			if( !IsFermenting ) { return; }
 			float temperature = parent.AmbientTemperature;
-			FermentingTemperatureRange range = PropsBlend.TemperatureRanges.FirstOrDefault(tr => temperature >= tr.MinTemp && temperature <= tr.MaxTemp);
-			if( range == null) { range = FermentingTemperatureRange.OffRange; }
-			if( !TicksInRange.ContainsKey(range.key)) { TicksInRange[range.key] = 1; }
-			else { TicksInRange[range.key]++; }
+			foreach(var item in TicksInStyle.Where(x => x.Key.IsValidTemperature(temperature)))
+			{
+				TicksInStyle.Increment(item.Key);
+			}
 		}
 
 		public override string CompInspectStringExtra()
