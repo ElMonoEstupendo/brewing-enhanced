@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 using Verse;
 using Verse.AI;
 
-namespace BrewingEnhanced
+namespace BrewingEnhanced.Work
 {
     public class JobDriver_AddDryHops : JobDriver
     {
+		private const TargetIndex FermenterInd = TargetIndex.A;
+		private const TargetIndex DryHopsInd = TargetIndex.B;
+		private const int Duration = 200;
 		protected CompBlend Fermenter
 		{
 			get
@@ -68,7 +71,7 @@ namespace BrewingEnhanced
 			yield return Toils_Haul.CheckForGetOpportunityDuplicate(reserveDryHops, TargetIndex.B, TargetIndex.None, true);
 			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
 			yield return Toils_General.Wait(Fermenter.PropsBlend.DryHoppingTickCount, TargetIndex.None).FailOnDestroyedNullOrForbidden(TargetIndex.B).FailOnDestroyedNullOrForbidden(TargetIndex.A).FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch).WithProgressBarToilDelay(TargetIndex.A);
-			Toil toil = ToilMaker.MakeToil("MakeNewToils");
+			Toil toil = ToilMaker.MakeToil("AddSecondaryIngredients");
 			toil.initAction = delegate ()
 			{
 				Fermenter.AddSecondary(DryHops);
@@ -77,14 +80,5 @@ namespace BrewingEnhanced
 			yield return toil;
 			yield break;
 		}
-
-		// Token: 0x0400500A RID: 20490
-		private const TargetIndex FermenterInd = TargetIndex.A;
-
-		// Token: 0x0400500B RID: 20491
-		private const TargetIndex DryHopsInd = TargetIndex.B;
-
-		// Token: 0x0400500C RID: 20492
-		private const int Duration = 200;
 	}
 }

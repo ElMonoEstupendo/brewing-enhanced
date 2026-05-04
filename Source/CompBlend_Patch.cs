@@ -56,6 +56,7 @@ namespace BrewingEnhanced
 					if( numAdded > 0 )
 					{
 						blend.Add(wortBlend);
+						blend.CullStyles(ByBlend: true);
 					}
 				}
 			}

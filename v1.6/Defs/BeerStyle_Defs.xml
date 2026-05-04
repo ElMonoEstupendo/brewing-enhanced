@@ -2,10 +2,21 @@
 <Defs>
 	<BrewingEnhanced.BeerStyleDef>
 		<defName>BeerStyle_Off</defName>
-		<Label>Off</Label>
+		<Label>Off Beer</Label>
 		<Priority>0</Priority>
 		<MinTemp>-274</MinTemp>
 		<MaxTemp>1000</MaxTemp>
+		<TastingNotes>Beer that hasn't properly fermented, probably due to incorrect temperature. Yuck!</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef>
+		<defName>BeerStyle_OffOpen</defName>
+		<Label>Off Beer</Label>
+		<Priority>0</Priority>
+		<MinTemp>-274</MinTemp>
+		<MaxTemp>1000</MaxTemp>
+		<TastingNotes>Yuck... did someone leave the fermenter lid open? Why would they do that? This beer needs more wheat for this to work.</TastingNotes>
+		<mustOpen>true</mustOpen>
 	</BrewingEnhanced.BeerStyleDef>
 	
 	<BrewingEnhanced.BeerStyleDef Name="BeerStyle_Lager">
@@ -80,6 +91,32 @@
 	</BrewingEnhanced.BeerStyleDef>
 	
 	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
+		<defName>BeerStyle_CreamAle</defName>
+		<Label>Cream Ale</Label>
+		<Priority>3</Priority>
+		<ItemRanges>
+			<li>
+				<key>RawCorn</key>
+				<value><min>30</min><max>100</max></value>
+			</li>
+		</ItemRanges>
+		<TastingNotes>A light, crisp ale with a smooth, mildly sweet body. Its cloudier than normal and comes out the bottle with a deliciously thick head, giving its trademark name.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
+		<defName>BeerStyle_OatmealPaleAle</defName>
+		<Label>Oatmeal Pale Ale</Label>
+		<Priority>3</Priority>
+		<ItemRanges>
+			<li>
+				<key>BrewingEnhanced_RawOats</key>
+				<value><min>30</min><max>100</max></value>
+			</li>
+		</ItemRanges>
+		<TastingNotes>A smooth, slightly creamy body that balances citrusy or piney hop characters, depending on the exact oats used. Expect a low malt sweetness and low bitterness.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
 		<defName>BeerStyle_Stout</defName>
 		<Label>Stout</Label>
 		<Priority>4</Priority>
@@ -90,6 +127,36 @@
 			</li>
 		</ItemRanges>
 		<TastingNotes>A dark ale, almost pitch black, which is a result of roasting the barley malts. The result is a rich flavour, with strong notes of coffee and chocolate. There is a distinct bitter finish on the palette. Enjoyed worldwide for its velvety mouthfeel.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
+		<defName>BeerStyle_BerlinerWeisse</defName>
+		<Label>Berliner Weisse</Label>
+		<Priority>5</Priority>
+		<ItemRanges>
+			<li>
+				<key>BrewingEnhanced_RawWheat</key>
+				<value><min>50</min><max>100</max></value>
+			</li>
+		</ItemRanges>
+		<mustOpen>true</mustOpen>
+		<TastingNotes>An intentionally tart, acidic beer, brewed by directly encouraging bacteria to interfere with the process. The sweetness of the wheat has expertly counteracted this flavour, however. The result is a crisp, refreshing taste with varying levels of funk, fruitiness, and sourness.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
+		<defName>BeerStyle_FruitLambic</defName>
+		<Label>Fruit Lambic</Label>
+		<Priority>5</Priority>
+		<ItemRanges>
+			<li>
+				<key>BrewingEnhanced_RawWheat</key>
+				<value><min>30</min><max>100</max></value>
+			</li>
+		</ItemRanges>
+		<AcceptedSecondaryIngredients><li>RawBerries</li></AcceptedSecondaryIngredients>
+		<NeedsSecondary>true</NeedsSecondary>
+		<mustOpen>true</mustOpen>
+		<TastingNotes>A traditional Belgian sour beer that. Fermented with wild yeast and bacteria, then aged with fruit to develop complex tart, funky, and fruity flavors. The whole process feels like it shouldn't have worked... and yet here we are! Still classified as a beer due to the process and a positive unique flavour you won't forget soon.</TastingNotes>
 	</BrewingEnhanced.BeerStyleDef>
 	
 	<BrewingEnhanced.BeerStyleDef>

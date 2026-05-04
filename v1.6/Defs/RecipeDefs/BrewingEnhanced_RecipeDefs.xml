@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<RecipeDef Name="BrewingEnhanced_MashGrain">
+		<defName>BrewingEnhanced_MashGrain</defName>
+		<label>make mash from grain</label>
+		<description>Mash up grains and steep in water. First step in brewing beer.</description>
+		<jobString>mashing grain</jobString>
+		<workAmount>600</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workSkill>Cooking</workSkill>
+		<recipeUsers>
+		  <li>Brewery</li>
+		</recipeUsers>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>RawCorn</li>
+				<li>RawRice</li>
+				<li>BrewingEnhanced_RawBarley</li>
+				<li>BrewingEnhanced_RawOats</li>
+				<li>BrewingEnhanced_RawWheat</li>
+				<li>BrewingEnhanced_RoastBarley</li>
+			  </thingDefs>
+			</filter>
+			<count>100</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <BrewingEnhanced_Mash>25</BrewingEnhanced_Mash>
+		</products>
+		<fixedIngredientFilter>
+		  <thingDefs>
+			<li>RawCorn</li>
+			<li>RawRice</li>
+			<li>BrewingEnhanced_RawBarley</li>
+			<li>BrewingEnhanced_RawOats</li>
+			<li>BrewingEnhanced_RawWheat</li>
+			<li>BrewingEnhanced_RoastBarley</li>
+		  </thingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+		  <thingDefs>
+			<li>RawCorn</li>
+			<li>RawRice</li>
+			<li>BrewingEnhanced_RawBarley</li>
+			<li>BrewingEnhanced_RawOats</li>
+			<li>BrewingEnhanced_RawWheat</li>
+			<li>BrewingEnhanced_RoastBarley</li>
+		  </thingDefs>
+		</defaultIngredientFilter>
+	</RecipeDef>
+	
+	<RecipeDef Name="BrewingEnhanced_BoilMash">
+		<defName>BrewingEnhanced_BoilMash</defName>
+		<label>boil mash into wort</label>
+		<description>Boil mash and hops to make wort. Second step in brewing beer.</description>
+		<jobString>boiling mash</jobString>
+		<workAmount>600</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+			</recipeUsers>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>BrewingEnhanced_Mash</li>
+			  </thingDefs>
+			</filter>
+			<count>25</count>
+		  </li>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>RawHops</li>
+			  </thingDefs>
+			</filter>
+			<count>25</count>
+		  </li>
+		</ingredients>
+		<products>
+		  <Wort>25</Wort>
+		</products>
+	</RecipeDef>
+	
+	<RecipeDef Name="BrewingEnhanced_RoastGrains" Abstract="True">
+		<defName>BrewingEnhanced_RoastGrains</defName>
+		<label>roast grains</label>
+		<description>Roast grains over heat to increase nutrition and lifetime.</description>
+		<jobString>roasting grains</jobString>
+		<workAmount>50</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workSkill>Cooking</workSkill>
+		<recipeUsers>
+			<li>ElectricStove</li>
+			<li>FueledStove</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef ParentName="BrewingEnhanced_RoastGrains">
+		<defName>BrewingEnhanced_RoastBarleyGrains</defName>
+		<label>roast barley</label>
+		<description>Roast barley over heat to increase nutrition and lifetime.</description>
+		<jobString>roasting barley</jobString>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>BrewingEnhanced_RawBarley</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+			<BrewingEnhanced_RoastBarley>5</BrewingEnhanced_RoastBarley>
+		</products>
+	</RecipeDef>
+
+</Defs>

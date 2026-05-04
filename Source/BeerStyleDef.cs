@@ -23,7 +23,30 @@ namespace BrewingEnhanced
 
 		public const float RatioTolerance = 0.1f;
 
+		public bool Accepts(CompBlend blend, bool byBlend = false, bool bySecondary = false, bool byOpen = false)
+		{
+			bool ret = true;
+			if( byBlend && !AcceptsBlend(blend) ) { ret = false; }
+			if( bySecondary && !AcceptsSecondary(blend) ) { ret = false; }
+			if( byOpen && !AcceptsOpen(blend) ) { ret = false; }
+			return ret;
+		}
+
 		public bool AcceptsBlend(CompBlend blend)
+		{
+			if( ItemRanges != null )
+			{
+				foreach( var kvp in ItemRanges )
+				{
+					int present = blend.BlendItems.ContainsKey(kvp.Key) ? blend.BlendItems[kvp.Key] : 0;
+					if( !kvp.Value.IsInRange(present) ) { return false; }
+				}
+			}
+
+			return true;
+		}
+
+		public bool AcceptsSecondary(CompBlend blend)
 		{
 			if( AcceptedSecondaryIngredients != null )
 			{
@@ -35,16 +58,12 @@ namespace BrewingEnhanced
 					return false;
 				}
 			}
+			return true;
+		}
 
-			if( ItemRanges != null )
-			{
-				foreach( var kvp in ItemRanges )
-				{
-					int present = blend.BlendItems.ContainsKey(kvp.Key) ? blend.BlendItems[kvp.Key] : 0;
-					if( !kvp.Value.IsInRange(present) ) { return false; }
-				}
-			}
-
+		public bool AcceptsOpen(CompBlend blend)
+		{
+			if( mustOpen == false && blend.Opened ) { return false; }
 			return true;
 		}
 
@@ -74,9 +93,13 @@ namespace BrewingEnhanced
 			}
 			if( AcceptedSecondaryIngredients != null && blend.SecondaryItem?.stockedDef != null )
 			{
-				ret += "Dry Hopping: " + blend.SecondaryItem.stockedDef.LabelCap + "\r\n";
+				ret += "\tDry Hopping: " + blend.SecondaryItem.stockedDef.LabelCap + "\r\n";
 			}
-			ret += "Brewed between " + MinTemp.ToString() + " and " + MaxTemp.ToString() + " degrees.\r\n";
+			ret += "\tBrewed between " + MinTemp.ToString() + " and " + MaxTemp.ToString() + " degrees.\r\n";
+			if( mustOpen )
+			{
+				ret += "\tFermenter opened.\r\n";
+			}
 
 			return ret;
 		}

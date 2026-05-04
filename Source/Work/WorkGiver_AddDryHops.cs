@@ -9,7 +9,7 @@ using Verse;
 using Verse.Noise;
 using Defs;
 
-namespace BrewingEnhanced
+namespace BrewingEnhanced.Work
 {
     public class WorkGiver_AddDryHops : WorkGiver_Scanner
     {
@@ -18,7 +18,7 @@ namespace BrewingEnhanced
 			MapComponent_BrewingEnhanced map_comp = pawn.Map.GetComponent<MapComponent_BrewingEnhanced>();
 			if( null == map_comp ) { yield break; }
 
-			foreach(var item in map_comp.listerSecondaries.Where(b => b.PropsBlend.IsFermenter))
+			foreach(var item in map_comp.listerFermenters)
 			{
 				yield return item.parent;
 			}

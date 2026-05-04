@@ -14,8 +14,9 @@ namespace Defs
     {
 		public static ThingDef			BrewingEnhanced_Mash;
 		public static JobDef			AddDryHops;
+		public static JobDef            OpenFermenter;
 		public static BeerStyleDef		BeerStyle_Off;
-		public static ThingDef			RawCorn;
+		public static BeerStyleDef      BeerStyle_OffOpen;
 		public static StatCategoryDef	BrewingEnhanced_BeerStyleCategory;
 	}
 }

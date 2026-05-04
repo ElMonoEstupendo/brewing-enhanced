@@ -3,7 +3,7 @@
 	<WorkGiverDef>
 		<defName>AddDryHops</defName>
 		<label>adding dry hops</label>
-		<giverClass>BrewingEnhanced.WorkGiver_AddDryHops</giverClass>
+		<giverClass>BrewingEnhanced.Work.WorkGiver_AddDryHops</giverClass>
 		<workType>Hauling</workType>
 		<verb>dry hop</verb>
 		<gerund>dry hopping</gerund>
@@ -16,8 +16,30 @@
 	
 	<JobDef>
 		<defName>AddDryHops</defName>
-		<driverClass>BrewingEnhanced.JobDriver_AddDryHops</driverClass>
+		<driverClass>BrewingEnhanced.Work.JobDriver_AddDryHops</driverClass>
 		<reportString>adding TargetB to TargetA.</reportString>
+		<suspendable>false</suspendable>
+		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+	</JobDef>
+	
+	<WorkGiverDef>
+		<defName>OpenFermenter</defName>
+		<label>opening fermenter</label>
+		<giverClass>BrewingEnhanced.Work.WorkGiver_OpenFermenter</giverClass>
+		<workType>BasicWorker</workType>
+		<verb>open fermenter</verb>
+		<gerund>opening fermenter</gerund>
+		<priorityInType>19</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<canBeDoneByMechs>true</canBeDoneByMechs>
+	</WorkGiverDef>
+	
+	<JobDef>
+		<defName>OpenFermenter</defName>
+		<driverClass>BrewingEnhanced.Work.JobDriver_OpenFermenter</driverClass>
+		<reportString>opening TargetA.</reportString>
 		<suspendable>false</suspendable>
 		<allowOpportunisticPrefix>true</allowOpportunisticPrefix>
 	</JobDef>

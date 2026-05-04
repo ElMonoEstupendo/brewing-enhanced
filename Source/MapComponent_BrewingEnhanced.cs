@@ -5,7 +5,7 @@ namespace BrewingEnhanced
 {
 	public class MapComponent_BrewingEnhanced : MapComponent
 	{
-		public List<CompBlend> listerSecondaries = new List<CompBlend>();
+		public List<CompBlend> listerFermenters = new List<CompBlend>();
 		public MapComponent_BrewingEnhanced(Map map) : base(map)
 		{
 			Log.Message("Adding the brewing map component. You know what that means...");
@@ -13,12 +13,12 @@ namespace BrewingEnhanced
 
 		public void Add(CompBlend blend)
 		{
-			listerSecondaries.AddDistinct(blend);
+			if( blend.PropsBlend.IsFermenter ){ listerFermenters.AddDistinct(blend); }
 		}
 
 		public void Remove(CompBlend blend)
 		{
-			listerSecondaries.Remove(blend);
+			listerFermenters.Remove(blend);
 		}
     }
 }

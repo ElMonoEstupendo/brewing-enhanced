@@ -21,6 +21,8 @@ namespace BrewingEnhanced
 		public Dictionary<BeerStyleDef, int> TicksInStyle = new Dictionary<BeerStyleDef, int>();
 		public bool DelayReset = false;
 		public BeerStyleDef Style = null;
+		public bool IsOpen = false;
+		public bool ToOpen = false;
 
 		// Derived
 		public Dictionary<ThingDef, float> BlendFractions => BlendItems.ToDictionary(x => x.Key, x => (float)x.Value / TotalItemCount);
@@ -30,6 +32,23 @@ namespace BrewingEnhanced
 		public bool AcceptingDryHops => !(SecondaryItem?.Satisfied ?? true) && (TotalProgress < PropsBlend.MaxDryHoppingProgress);
 		public bool IsFermenting => PropsBlend.IsFermenter && ((parent as Building_FermentingBarrel).Fermented == false) && (TotalItemCount > 0);
 		public List<string> BlendStrings => BlendFractions.NullOrEmpty() ? new List<string>() { "Empty" } : BlendFractions.Select(x => ( x.Value * 100 ).ToString() + "% " + x.Key.label).ToList();
+
+		// Skins
+		public bool Opened
+		{
+			get { return IsOpen; } 
+			set
+			{
+				if( IsOpen != value )
+				{
+					IsOpen = value;
+					if( value )
+					{
+						CullStyles(ByOpen: true);
+					}
+				}
+			}
+		}
 
 		public CompProperties_Blend PropsBlend
 		{
@@ -52,6 +71,8 @@ namespace BrewingEnhanced
 			Scribe_Values.Look(ref TotalProgress, "TotalProgress");
 			Scribe_Collections.Look(ref TicksInStyle, "TicksInStyle");
 			Scribe_Defs.Look(ref Style, "Style");
+			Scribe_Values.Look(ref IsOpen, "IsOpen");
+			Scribe_Values.Look(ref ToOpen, "ToOpen");
 			if( BlendItems == null ) BlendItems = new Dictionary<ThingDef, int>();
 			if( TicksInStyle == null ) TicksInStyle = DefDatabase<BeerStyleDef>.AllDefs.ToDictionary(x => x, x => 0);
 		}
@@ -66,23 +87,25 @@ namespace BrewingEnhanced
 			ResetListers(parent?.Map);
 			TicksInStyle.Clear();
 			TicksInStyle = DefDatabase<BeerStyleDef>.AllDefs.ToDictionary(x => x, x => 0);
+			Opened = false;
+			ToOpen = false;
 		}
 
-		public void CullStyles()
+		public void CullStyles(bool ByBlend = false, bool BySecondary = false, bool ByOpen = false)
 		{
-			TicksInStyle.RemoveAll(x => !x.Key.AcceptsBlend(this));
+			TicksInStyle.RemoveAll(x => !x.Key.Accepts(this, ByBlend, BySecondary, ByOpen));
 		}
-
+		 
 		public BeerStyleDef ResolveStyle()
 		{
-			CullStyles();
+			CullStyles(true, true, true);
 			int TotalTicks = TicksInStyle[BEDefOfs.BeerStyle_Off];
 			TicksInStyle.Remove(BEDefOfs.BeerStyle_Off);
 
 			List<KeyValuePair<BeerStyleDef, int>> candidates = TicksInStyle.Where(kvp => kvp.Value > TotalTicks / 2).ToList();
 			if( candidates.Count == 0 )
 			{
-				Style = BEDefOfs.BeerStyle_Off;
+				Style = Opened ? BEDefOfs.BeerStyle_OffOpen : BEDefOfs.BeerStyle_Off;
 			} else
 			{
 				candidates.SortBy(x => x.Key.Priority);
@@ -166,7 +189,7 @@ namespace BrewingEnhanced
 			if( num_added <= 0 ) { return; }
 			SecondaryItem.currentCount += num_added;
 			t.SplitOff(num_added).Destroy();
-			CullStyles();
+			CullStyles(BySecondary: true);
 		}
 
 		public override void CompTickRare()
@@ -218,24 +241,41 @@ namespace BrewingEnhanced
 				};
 			}
 
-			if( PropsBlend.IsFermenter && (SecondaryItem == null || !SecondaryItem.Satisfied) )
+			if( PropsBlend.IsFermenter && TotalItemCount > 0 )
 			{
-				yield return new Command_Action
+				Command_Toggle toggle = new Command_Toggle();
+				toggle.defaultLabel = "Open Barrel";
+				toggle.icon = ContentFinder<Texture2D>.Get("Designations/Open", false);
+				toggle.isActive = delegate () { return ToOpen; };
+				toggle.toggleAction = delegate ()
+				{ 
+					ToOpen = !ToOpen;
+					if( ToOpen && !Opened ) { parent.Map.GetComponent<MapComponent_BrewingEnhanced>()?.Add(this); }
+				};
+				toggle.Disabled = Opened;
+				toggle.disabledReason = "Already Opened.";
+				toggle.defaultDesc = "Open the barrel, to encourage bacteria.";
+				yield return toggle;
+
+				if( SecondaryItem == null || !SecondaryItem.Satisfied )
 				{
-					defaultLabel = "Dry Hopping",
-					icon = ContentFinder<Texture2D>.Get("things/icons/flavour", false),
-					action = delegate()
+					yield return new Command_Action
 					{
-						List<FloatMenuOption> options = PropsBlend.SecondaryItems.Select(item => new FloatMenuOption(item.thingDef.label, 
+						defaultLabel = "Dry Hopping",
+						icon = ContentFinder<Texture2D>.Get("things/icons/flavour", false),
+						action = delegate ()
+						{
+							List<FloatMenuOption> options = PropsBlend.SecondaryItems.Select(item => new FloatMenuOption(item.thingDef.label,
 							delegate()
 							{
 								SecondaryItem = new Stock(item.thingDef,  item.count);
 								parent.Map.GetComponent<MapComponent_BrewingEnhanced>()?.Add(this);
 							})).ToList();
-						Find.WindowStack.Add(new FloatMenu(options));
-					},
-					defaultDesc = "Select a flavouring ingredient for dry hopping."
-				};
+							Find.WindowStack.Add(new FloatMenu(options));
+						},
+						defaultDesc = "Select a flavouring ingredient for dry hopping."
+					};
+				}
 			}
 
 			yield break;
