@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<BrewingEnhanced.BeerStyleDef>
+		<defName>BeerStyle_Off</defName>
+		<Label>Off</Label>
+		<Priority>0</Priority>
+		<MinTemp>-274</MinTemp>
+		<MaxTemp>1000</MaxTemp>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef Name="BeerStyle_Lager">
+		<defName>BeerStyle_Lager</defName>
+		<Label>Craft Lager</Label>
+		<Priority>1</Priority>
+		<MinTemp>7</MinTemp>
+		<MaxTemp>14</MaxTemp>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef Name="BeerStyle_Ale">
+		<defName>BeerStyle_Ale</defName>
+		<Label>Craft Ale</Label>
+		<Priority>1</Priority>
+		<MinTemp>18</MinTemp>
+		<MaxTemp>24</MaxTemp>
+		<TastingNotes>A unique ale, that could only be brewed on the Rim. It's got a fine balance of malts and hops, but it's difficult to pin down the exact flavour. Pawns smile at you and tell you it's great, although you can't quite tell if they are just being polite. You think it tastes nice.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentNamer="BeerStyle_Ale">
+		<defName>BeerStyle_FruitAle</defName>
+		<Label>Ale</Label>
+		<Priority>2</Priority>
+		<AcceptedSecondaryIngredients><li>RawBerries</li></AcceptedSecondaryIngredients>
+		<NeedsSecondary>true</NeedsSecondary>
+		<PrependSecondary>true</PrependSecondary>
+		<TastingNotes>A great balance of malt and hop flavours, topped off with a unique fruity bouquet that slices through the bitterness. Bartender. Bring me another!</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
+		<defName>BeerStyle_MexicanCraftBeer</defName>
+		<Label>Mexican Craft Beer</Label>
+		<Priority>2</Priority>
+		<AcceptedSecondaryIngredients><li>RawAgave</li></AcceptedSecondaryIngredients>
+		<NeedsSecondary>true</NeedsSecondary>
+		<TastingNotes>A light, refreshing ale fermented with agave nectar, giving a clean, crisp body with subtle honey-like sweetness. Notice the soft, floral notes.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale" Name="BeerStyle_PaleAle">
+		<defName>BeerStyle_PaleAle</defName>
+		<Label>Pale Ale</Label>
+		<Priority>2</Priority>
+		<ItemRanges>
+			<li>
+				<key>BrewingEnhanced_RawBarley</key>
+				<value><min>80</min><max>100</max></value>
+			</li>
+		</ItemRanges>
+		<TastingNotes>A hop-forward ale brewed with lightly roasted barley malts. A fine combination of crisp and caramel flavours giving it a well balanced body. The balance pairs wonderfully with the bitterness from the hops.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_PaleAle">
+		<defName>BeerStyle_DoubleIPA</defName>
+		<Label>Double IPA</Label>
+		<Priority>3</Priority>
+		<AcceptedSecondaryIngredients><li>RawHops</li></AcceptedSecondaryIngredients>
+		<NeedsSecondary>true</NeedsSecondary>
+		<TastingNotes>IPAs were rumoured to be invented by the British, to get beer out to troops in India. They added more hops to the beer to better preserve it for the long sea journey. It just so happened to taste wonderful. Modern beers add even more hops to make it a "Double IPA", to get even more of that unique hoppy flavour into the final product.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
+		<defName>BeerStyle_Hefeweizen</defName>
+		<Label>Hefeweizen</Label>
+		<Priority>3</Priority>
+		<ItemRanges>
+			<li>
+				<key>BrewingEnhanced_RawWheat</key>
+				<value><min>30</min><max>100</max></value>
+			</li>
+		</ItemRanges>
+		<TastingNotes>The wheat has caused the beer to become cloudy. It's also resulted in a lighter body and a smooth mouthfeel, with subtle fruity or spicy notes. Combines well with a hot, cloudless summer day. The higher fermenting temperatures can bring out the fruity flavours even more.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef ParentName="BeerStyle_Ale">
+		<defName>BeerStyle_Stout</defName>
+		<Label>Stout</Label>
+		<Priority>4</Priority>
+		<ItemRanges>
+			<li>
+				<key>BrewingEnhanced_RoastBarley</key>
+				<value><min>10</min><max>100</max></value>
+			</li>
+		</ItemRanges>
+		<TastingNotes>A dark ale, almost pitch black, which is a result of roasting the barley malts. The result is a rich flavour, with strong notes of coffee and chocolate. There is a distinct bitter finish on the palette. Enjoyed worldwide for its velvety mouthfeel.</TastingNotes>
+	</BrewingEnhanced.BeerStyleDef>
+	
+	<BrewingEnhanced.BeerStyleDef>
+		<defName>BeerStyle_Pilsner</defName>
+		<Label>Pilsner</Label>
+		<Priority>3</Priority>
+		<MinTemp>7</MinTemp>
+		<MaxTemp>14</MaxTemp>
+		<AcceptedSecondaryIngredients><li>RawHops</li></AcceptedSecondaryIngredients>
+	</BrewingEnhanced.BeerStyleDef>
+
+</Defs>

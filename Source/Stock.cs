@@ -19,6 +19,8 @@ namespace BrewingEnhanced
 		public bool Satisfied => currentCount >= targetCount;
 		public string Description => stockedDef.label + " " + PercentageSatisfied.ToString() + "%";
 
+		public Stock() : base() { }
+
 		public Stock(ThingDef def, int target)
 		{
 			stockedDef = def;

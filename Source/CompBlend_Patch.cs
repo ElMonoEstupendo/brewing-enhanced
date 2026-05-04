@@ -82,7 +82,7 @@ namespace BrewingEnhanced
 			public static void Prefix(Building_FermentingBarrel __instance)
 			{
 				CompBlend barrelBlend = __instance.TryGetComp<CompBlend>();
-				if(  barrelBlend != null )
+				if( barrelBlend != null )
 				{
 					barrelBlend.DelayReset = true;
 				}
@@ -95,7 +95,11 @@ namespace BrewingEnhanced
 				CompBlend barrelBlend = __instance.TryGetComp<CompBlend>();
 				if( null != barrelBlend )
 				{
-					if( null != beerBlend ) { beerBlend.Add(barrelBlend); }
+					if( null != beerBlend ) 
+					{ 
+						beerBlend.Add(barrelBlend);
+						beerBlend.ResolveStyle();
+					}
 					barrelBlend.DelayReset = false;
 					if( null != beer ){ barrelBlend.Reset(); } // Only actually reset if beer was made - original method can "fail".
 				}

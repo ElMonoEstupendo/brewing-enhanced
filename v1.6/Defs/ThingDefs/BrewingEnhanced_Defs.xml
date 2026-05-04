@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+	<StatCategoryDef>
+		<defName>BrewingEnhanced_BeerStyleCategory</defName>
+		<label>Beer Style</label>
+		<displayOrder>10000</displayOrder>
+	</StatCategoryDef>
+
 	<ThingDef Name="BrewingEnhanced_Mash" ParentName="ResourceBase">
 		<defName>BrewingEnhanced_Mash</defName>
 		<label>mash</label>
@@ -32,6 +38,10 @@
 			<AcceptedDefs>
 				<li>RawCorn</li>
 				<li>RawRice</li>
+				<li>BrewingEnhanced_RawBarley</li>
+				<li>BrewingEnhanced_RawOats</li>
+				<li>BrewingEnhanced_RawWheat</li>
+				<li>BrewingEnhanced_RoastBarley</li>
 			</AcceptedDefs>
 		  </li>
 		</comps>
@@ -57,6 +67,10 @@
 			  <thingDefs>
 				<li>RawCorn</li>
 				<li>RawRice</li>
+				<li>BrewingEnhanced_RawBarley</li>
+				<li>BrewingEnhanced_RawOats</li>
+				<li>BrewingEnhanced_RawWheat</li>
+				<li>BrewingEnhanced_RoastBarley</li>
 			  </thingDefs>
 			</filter>
 			<count>100</count>
@@ -69,12 +83,20 @@
 		  <thingDefs>
 			<li>RawCorn</li>
 			<li>RawRice</li>
+			<li>BrewingEnhanced_RawBarley</li>
+			<li>BrewingEnhanced_RawOats</li>
+			<li>BrewingEnhanced_RawWheat</li>
+			<li>BrewingEnhanced_RoastBarley</li>
 		  </thingDefs>
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
 		  <thingDefs>
 			<li>RawCorn</li>
 			<li>RawRice</li>
+			<li>BrewingEnhanced_RawBarley</li>
+			<li>BrewingEnhanced_RawOats</li>
+			<li>BrewingEnhanced_RawWheat</li>
+			<li>BrewingEnhanced_RoastBarley</li>
 		  </thingDefs>
 		</defaultIngredientFilter>
 	</RecipeDef>
@@ -117,37 +139,248 @@
 		</products>
 	</RecipeDef>
 	
-	<BrewingEnhanced.BeerStyleDef>
-		<defName>Lager</defName>
-		<Label>Lager</Label>
-		<Priority>1</Priority>
-		<MinTemp>7</MinTemp>
-		<MaxTemp>14</MaxTemp>
-	</BrewingEnhanced.BeerStyleDef>
+	<ThingDef ParentName="PlantFoodRawBase">
+		<defName>BrewingEnhanced_RawWheat</defName>
+		<label>wheat</label>
+		<description>Raw wheat.</description>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<possessionCount>10</possessionCount>
+		<graphicData>
+		  <texPath>things/items/resource/plantfoodraw/RawWheat</texPath>
+		</graphicData>
+		<statBases>
+		  <MarketValue>1.1</MarketValue>
+		  <Nutrition>0.33</Nutrition>
+		</statBases>
+		<ingestible>
+		  <foodType>VegetableOrFruit, Seed</foodType>
+		</ingestible>
+		<comps>
+		  <li Class="CompProperties_Rottable">
+			<daysToRotStart>60</daysToRotStart>
+			<rotDestroys>true</rotDestroys>
+		  </li>
+		</comps>
+	</ThingDef>
 	
-	<BrewingEnhanced.BeerStyleDef>
-		<defName>Ale</defName>
-		<Label>Ale</Label>
-		<Priority>1</Priority>
-		<MinTemp>18</MinTemp>
-		<MaxTemp>24</MaxTemp>
-	</BrewingEnhanced.BeerStyleDef>
+	<ThingDef ParentName="PlantFoodRawBase">
+		<defName>BrewingEnhanced_RawOats</defName>
+		<label>oats</label>
+		<description>Raw oats.</description>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<possessionCount>10</possessionCount>
+		<graphicData>
+		  <texPath>things/items/resource/plantfoodraw/RawOats</texPath>
+		</graphicData>
+		<statBases>
+		  <MarketValue>1.1</MarketValue>
+		  <Nutrition>0.41</Nutrition>
+		</statBases>
+		<ingestible>
+		  <foodType>VegetableOrFruit, Seed</foodType>
+		</ingestible>
+		<comps>
+		  <li Class="CompProperties_Rottable">
+			<daysToRotStart>60</daysToRotStart>
+			<rotDestroys>true</rotDestroys>
+		  </li>
+		</comps>
+	</ThingDef>
 	
-	<BrewingEnhanced.BeerStyleDef>
-		<defName>Pilsner</defName>
-		<Label>Pilsner</Label>
-		<Priority>2</Priority>
-		<MinTemp>7</MinTemp>
-		<MaxTemp>14</MaxTemp>
-		<SecondaryIngredient>RawHops</SecondaryIngredient>
-	</BrewingEnhanced.BeerStyleDef>
+	<ThingDef ParentName="PlantFoodRawBase">
+		<defName>BrewingEnhanced_RawBarley</defName>
+		<label>barley</label>
+		<description>Raw barley.</description>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<possessionCount>10</possessionCount>
+		<graphicData>
+		  <texPath>things/items/resource/plantfoodraw/RawBarley</texPath>
+		</graphicData>
+		<statBases>
+		  <MarketValue>1.1</MarketValue>
+		  <Nutrition>0.31</Nutrition>
+		</statBases>
+		<ingestible>
+		  <foodType>VegetableOrFruit, Seed</foodType>
+		</ingestible>
+		<comps>
+		  <li Class="CompProperties_Rottable">
+			<daysToRotStart>60</daysToRotStart>
+			<rotDestroys>true</rotDestroys>
+		  </li>
+		</comps>
+	</ThingDef>
 	
-	<BrewingEnhanced.BeerStyleDef>
-		<defName>IPA</defName>
-		<Label>IPA</Label>
-		<Priority>2</Priority>
-		<MinTemp>18</MinTemp>
-		<MaxTemp>24</MaxTemp>
-		<SecondaryIngredient>RawHops</SecondaryIngredient>
-	</BrewingEnhanced.BeerStyleDef>
+	<ThingDef ParentName="OrganicProductBase">
+		<defName>BrewingEnhanced_RoastBarley</defName>
+		<label>roast barley</label>
+		<description>Barley that has been roasted to enhance nutrition and flavour.</description>
+		<thingCategories>
+			<li>Foods</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>things/items/resource/RoastBarley</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>1.25</MarketValue>
+			<Nutrition>0.45</Nutrition>
+		</statBases>
+		<stackLimit>75</stackLimit>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<ingestible>
+			<foodType>VegetableOrFruit, Seed</foodType>
+			<preferability>MealSimple</preferability>
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>RawVegetable_Eat</ingestSound>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>90</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+		<allowedArchonexusCount>200</allowedArchonexusCount>
+	</ThingDef>
+	
+	<RecipeDef Name="BrewingEnhanced_RoastGrains" Abstract="True">
+		<defName>BrewingEnhanced_RoastGrains</defName>
+		<label>roast grains</label>
+		<description>Roast grains over heat to increase nutrition and lifetime.</description>
+		<jobString>roasting grains</jobString>
+		<workAmount>50</workAmount>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+			</recipeUsers>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="BrewingEnhanced_RoastGrains">
+		<defName>BrewingEnhanced_RoastBarleyGrains</defName>
+		<label>roast barley</label>
+		<description>Roast barley over heat to increase nutrition and lifetime.</description>
+		<jobString>roasting barley</jobString>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>BrewingEnhanced_RawBarley</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<products>
+			<BrewingEnhanced_RoastBarley>5</BrewingEnhanced_RoastBarley>
+		</products>
+	</RecipeDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>Plant_BrewingEnhanced_Barley</defName>
+		<label>barley plant</label>
+		<description>Barley description.</description>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Nutrition>0.31</Nutrition>
+		</statBases>
+		<graphicData>
+			<texPath>things/plant/BarleyPlant</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>14</pathCost>
+		<ingestible />
+		<plant>
+			<fertilityMin>0.70</fertilityMin>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>BrewingEnhanced_RawBarley</harvestedThingDef>
+			<harvestYield>16</harvestYield>
+			<sowTags>
+				<li>Ground</li>
+			</sowTags>
+			<topWindExposure>0.35</topWindExposure>
+			<growDays>8.1</growDays>
+			<immatureGraphicPath>things/plant/BarleyPlant_Immature</immatureGraphicPath>
+			<visualSizeRange>0.5~1.4</visualSizeRange>
+			<wildOrder>2</wildOrder>
+			<purpose>Food</purpose>
+			<humanFoodPlant>true</humanFoodPlant>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>Plant_BrewingEnhanced_Oats</defName>
+		<label>oat plant</label>
+		<description>Oat description.</description>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Nutrition>0.41</Nutrition>
+		</statBases>
+		<graphicData>
+			<texPath>things/plant/OatPlant</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>14</pathCost>
+		<ingestible />
+		<plant>
+			<fertilityMin>0.70</fertilityMin>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>BrewingEnhanced_RawOats</harvestedThingDef>
+			<harvestYield>12</harvestYield>
+			<sowTags>
+				<li>Ground</li>
+			</sowTags>
+			<topWindExposure>0.35</topWindExposure>
+			<growDays>5.9</growDays>
+			<immatureGraphicPath>things/plant/OatPlant_Immature</immatureGraphicPath>
+			<visualSizeRange>0.5~1.4</visualSizeRange>
+			<wildOrder>2</wildOrder>
+			<purpose>Food</purpose>
+			<humanFoodPlant>true</humanFoodPlant>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>Plant_BrewingEnhanced_Wheat</defName>
+		<label>wheat plant</label>
+		<description>Wheat description.</description>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Nutrition>0.33</Nutrition>
+		</statBases>
+		<graphicData>
+			<texPath>things/plant/WheatPlant</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>14</pathCost>
+		<ingestible />
+		<plant>
+			<fertilityMin>0.70</fertilityMin>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>BrewingEnhanced_RawWheat</harvestedThingDef>
+			<harvestYield>15</harvestYield>
+			<sowTags>
+				<li>Ground</li>
+			</sowTags>
+			<topWindExposure>0.35</topWindExposure>
+			<growDays>7.4</growDays>
+			<immatureGraphicPath>things/plant/WheatPlant_Immature</immatureGraphicPath>
+			<visualSizeRange>0.5~1.4</visualSizeRange>
+			<wildOrder>2</wildOrder>
+			<purpose>Food</purpose>
+			<humanFoodPlant>true</humanFoodPlant>
+		</plant>
+	</ThingDef>
 </Defs>

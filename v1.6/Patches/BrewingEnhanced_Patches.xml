@@ -11,6 +11,10 @@
 				<AcceptedDefs>
 					<li>RawCorn</li>
 					<li>RawRice</li>
+					<li>BrewingEnhanced_RawBarley</li>
+					<li>BrewingEnhanced_RawOats</li>
+					<li>BrewingEnhanced_RawWheat</li>
+					<li>BrewingEnhanced_RoastBarley</li>
 					<li>RawHops</li>
 				</AcceptedDefs>
 				<SecondaryItems>
@@ -29,6 +33,10 @@
 				<AcceptedDefs>
 					<li>RawCorn</li>
 					<li>RawRice</li>
+					<li>BrewingEnhanced_RawBarley</li>
+					<li>BrewingEnhanced_RawOats</li>
+					<li>BrewingEnhanced_RawWheat</li>
+					<li>BrewingEnhanced_RoastBarley</li>
 					<li>RawHops</li>
 				</AcceptedDefs>
 				<SecondaryItems>
@@ -47,6 +55,10 @@
 				<AcceptedDefs>
 					<li>RawCorn</li>
 					<li>RawRice</li>
+					<li>BrewingEnhanced_RawBarley</li>
+					<li>BrewingEnhanced_RawOats</li>
+					<li>BrewingEnhanced_RawWheat</li>
+					<li>BrewingEnhanced_RoastBarley</li>
 					<li>RawHops</li>
 				</AcceptedDefs>
 			</li>
